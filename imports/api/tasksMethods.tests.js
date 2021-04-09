@@ -44,11 +44,11 @@ if (Meteor.isServer) {
           createAt: new Date(),
           otherUserId,
         });
-        assert.equal(TasksCollection.find().count, 4);
+        assert.equal(TasksCollection.find().count(), 4);
 
         mockMethodCall('tasks.removeAll', { context: { userId } });
 
-        assert.equal(TasksCollection.find().count, 1);
+        assert.equal(TasksCollection.find().count(), 1);
       });
 
       it(`can't delete task without an user authenticated`, () => {
